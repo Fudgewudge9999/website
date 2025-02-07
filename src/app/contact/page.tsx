@@ -13,7 +13,7 @@ import { format } from "date-fns"
 import { CalendarIcon, Clock, ChevronLeft, ChevronRight } from "lucide-react"
 
 export default function Contact() {
-  const [date, setDate] = useState<Date | undefined>(undefined)
+  const [date, setDate] = useState<Date | null>(null)
   const [time, setTime] = useState<string | undefined>(undefined)
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -114,13 +114,11 @@ export default function Contact() {
             >
               <Calendar 
                 selected={date}
-                onChange={(date: Date) => setDate(date)}
+                onChange={(date: Date | null) => setDate(date)}
                 dateFormat="MMMM d, yyyy"
                 minDate={new Date()}
                 placeholderText="Select a date"
                 className="border-none"
-                showPreviousMonthButton={false}
-                showNextMonthButton={false}
                 previousMonthButtonLabel={<ChevronLeft className="h-4 w-4" />}
                 nextMonthButtonLabel={<ChevronRight className="h-4 w-4" />}
               />
