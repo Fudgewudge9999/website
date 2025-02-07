@@ -19,8 +19,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} min-h-screen bg-background`}>
-        <header className="bg-primary text-primary-foreground p-4">
+      <body className={`${inter.className} min-h-screen bg-background flex flex-col`}>
+        <header className="bg-blue-600 text-white p-4">
           <nav className="container mx-auto flex justify-between items-center">
             <h1 className="text-2xl font-bold">MathsWithJosef</h1>
             <ul className="flex space-x-4">
@@ -42,8 +42,8 @@ export default function RootLayout({
             </ul>
           </nav>
         </header>
-        <main className="container mx-auto mt-8 px-4">{children}</main>
-        <footer className="bg-primary text-primary-foreground p-4 mt-8">
+        <main className="container mx-auto mt-8 px-4 flex-1">{children}</main>
+        <footer className="bg-blue-600 text-white p-4">
           <div className="container mx-auto text-center">
             &copy; {new Date().getFullYear()} MathsWithJosef. All rights reserved.
           </div>

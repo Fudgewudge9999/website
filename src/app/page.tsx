@@ -1,18 +1,22 @@
+import * as React from "react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center">
-      <h1 className="text-4xl font-bold text-blue-600 mb-8">Welcome to MathsWithJosef</h1>
-      <p className="text-xl text-center max-w-2xl mb-4">
-        Expert math tutoring for students from KS2 to GCSE, including 11+ maths & NVR, and A-level maths. Personalized
-        lessons tailored to your needs and learning style.
-      </p>
-      <Button asChild className="mb-12" size="lg">
-        <Link href="/contact">Book Your First Session</Link>
-      </Button>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className="flex flex-col items-center justify-evenly min-h-full py-12 space-y-16">
+      <div className="flex flex-col items-center space-y-6">
+        <h1 className="text-4xl font-bold text-blue-600">Welcome to MathsWithJosef</h1>
+        <p className="text-xl text-center max-w-2xl">
+          Expert math tutoring for students from KS2 to GCSE, including 11+ maths & NVR, and A-level maths. Personalized
+          lessons tailored to your needs and learning style.
+        </p>
+        <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700">
+          <Link href="/contact">Book Your First Session</Link>
+        </Button>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold text-blue-600 mb-4">KS2-GCSE</h2>
           <p>Comprehensive tutoring for all levels of primary and secondary school mathematics.</p>

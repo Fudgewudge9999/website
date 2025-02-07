@@ -10,7 +10,7 @@ import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
 import { format } from "date-fns"
-import { CalendarIcon, Clock } from "lucide-react"
+import { CalendarIcon, Clock, ChevronLeft, ChevronRight } from "lucide-react"
 
 export default function Contact() {
   const [date, setDate] = useState<Date | undefined>(undefined)
@@ -51,7 +51,7 @@ export default function Contact() {
   ]
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-2xl mx-auto mb-24">
       <h1 className="text-4xl font-bold text-primary mb-8 text-center">Contact Us</h1>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
@@ -107,8 +107,23 @@ export default function Contact() {
                 {date ? format(date, "PPP") : <span>Pick a date</span>}
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-auto p-0">
-              <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
+            <PopoverContent 
+              className="w-auto p-0" 
+              align="start" 
+              sideOffset={-165}
+            >
+              <Calendar 
+                selected={date}
+                onChange={(date: Date) => setDate(date)}
+                dateFormat="MMMM d, yyyy"
+                minDate={new Date()}
+                placeholderText="Select a date"
+                className="border-none"
+                showPreviousMonthButton={false}
+                showNextMonthButton={false}
+                previousMonthButtonLabel={<ChevronLeft className="h-4 w-4" />}
+                nextMonthButtonLabel={<ChevronRight className="h-4 w-4" />}
+              />
             </PopoverContent>
           </Popover>
         </div>
