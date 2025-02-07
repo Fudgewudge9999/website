@@ -1,20 +1,17 @@
-import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function Home() {
   return (
     <div className="flex flex-col items-center">
       <h1 className="text-4xl font-bold text-blue-600 mb-8">Welcome to MathsWithJosef</h1>
-      <Image
-        src="/placeholder.svg?height=300&width=300"
-        alt="Josef teaching math"
-        width={300}
-        height={300}
-        className="rounded-full mb-8"
-      />
-      <p className="text-xl text-center max-w-2xl mb-8">
+      <p className="text-xl text-center max-w-2xl mb-4">
         Expert math tutoring for students from KS2 to GCSE, including 11+ maths & NVR, and A-level maths. Personalized
         lessons tailored to your needs and learning style.
       </p>
+      <Button asChild className="mb-12" size="lg">
+        <Link href="/contact">Book Your First Session</Link>
+      </Button>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold text-blue-600 mb-4">KS2-GCSE</h2>
