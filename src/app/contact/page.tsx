@@ -11,6 +11,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { cn } from "@/lib/utils"
 import { format } from "date-fns"
 import { CalendarIcon, Clock, ChevronLeft, ChevronRight } from "lucide-react"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { CheckCircle2, XCircle } from "lucide-react"
 
 export default function Contact() {
   const [date, setDate] = useState<Date | null>(null)
@@ -58,10 +60,15 @@ export default function Contact() {
       setIsLoading(false);
       setShowSuccess(true);
 
+      // Scroll to top of the page
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
     } catch (error) {
       console.error('Error:', error);
       setIsLoading(false);
       setShowError(true);
+      // Also scroll to top on error
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -96,6 +103,25 @@ export default function Contact() {
   return (
     <div className="max-w-2xl mx-auto mb-24">
       <h1 className="text-4xl font-bold text-primary mb-8 text-center">Contact Us</h1>
+      
+      {showSuccess && (
+        <Alert className="mb-6 bg-green-50 text-green-700 border-green-200">
+          <CheckCircle2 className="h-4 w-4" />
+          <AlertDescription>
+            Thank you for your message! I will get back to you soon.
+          </AlertDescription>
+        </Alert>
+      )}
+      
+      {showError && (
+        <Alert className="mb-6 bg-red-50 text-red-700 border-red-200">
+          <XCircle className="h-4 w-4" />
+          <AlertDescription>
+            Sorry, there was an error sending your message. Please try again.
+          </AlertDescription>
+        </Alert>
+      )}
+
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
