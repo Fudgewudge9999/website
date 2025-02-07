@@ -15,12 +15,55 @@ import { CalendarIcon, Clock, ChevronLeft, ChevronRight } from "lucide-react"
 export default function Contact() {
   const [date, setDate] = useState<Date | null>(null)
   const [time, setTime] = useState<string | undefined>(undefined)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [showSuccess, setShowSuccess] = useState(false)
+  const [showError, setShowError] = useState(false)
+  const [subject, setSubject] = useState<string>('')
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted", { date, time })
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone: (e.target as HTMLFormElement).phone.value,
+          subject: (e.target as HTMLFormElement).subject.value,
+          message,
+          preferredDate: date ? format(date, "PPP") : undefined,
+          preferredTime: time,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      // Clear form
+      setName('');
+      setEmail('');
+      setMessage('');
+      setDate(null);
+      setTime(undefined);
+      (e.target as HTMLFormElement).reset(); // Reset other form fields
+      setIsLoading(false);
+      setShowSuccess(true);
+
+    } catch (error) {
+      console.error('Error:', error);
+      setIsLoading(false);
+      setShowError(true);
+    }
+  };
 
   const timeSlots = [
     "09:00",
@@ -58,13 +101,13 @@ export default function Contact() {
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
             Name
           </label>
-          <Input type="text" id="name" name="name" required className="mt-1" />
+          <Input type="text" id="name" name="name" required className="mt-1" value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
             Email
           </label>
-          <Input type="email" id="email" name="email" required className="mt-1" />
+          <Input type="email" id="email" name="email" required className="mt-1" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div>
           <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
@@ -76,7 +119,7 @@ export default function Contact() {
           <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
             Subject
           </label>
-          <Select name="subject">
+          <Select name="subject" value={subject} onValueChange={setSubject}>
             <SelectTrigger>
               <SelectValue placeholder="Select a subject" />
             </SelectTrigger>
@@ -93,7 +136,7 @@ export default function Contact() {
           <label htmlFor="message" className="block text-sm font-medium text-gray-700">
             Message
           </label>
-          <Textarea id="message" name="message" rows={4} className="mt-1" />
+          <Textarea id="message" name="message" rows={4} className="mt-1" value={message} onChange={(e) => setMessage(e.target.value)} />
         </div>
         <div className="flex flex-col space-y-2">
           <label className="block text-sm font-medium text-gray-700">Preferred Date for Introductory Session</label>
@@ -153,8 +196,8 @@ export default function Contact() {
             </PopoverContent>
           </Popover>
         </div>
-        <Button type="submit" className="w-full">
-          Submit
+        <Button type="submit" className="w-full" disabled={isLoading}>
+          {isLoading ? 'Sending...' : 'Submit'}
         </Button>
       </form>
     </div>
