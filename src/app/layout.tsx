@@ -31,6 +31,16 @@ export default function RootLayout({
               </li>
               <li>
                 <Button variant="ghost" asChild>
+                  <Link href="/about">About</Link>
+                </Button>
+              </li>
+              <li>
+                <Button variant="ghost" asChild>
+                  <Link href="/resources">Resources</Link>
+                </Button>
+              </li>
+              <li>
+                <Button variant="ghost" asChild>
                   <Link href="/testimonials">Testimonials</Link>
                 </Button>
               </li>
