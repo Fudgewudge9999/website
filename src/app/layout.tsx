@@ -5,6 +5,7 @@ import type React from "react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Analytics } from '@vercel/analytics/react'
+import { MobileNav } from "@/components/mobile-nav"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -26,7 +27,8 @@ export default function RootLayout({
             <Link href="/" className="hover:opacity-80 transition-opacity">
               <h1 className="text-2xl font-bold">MathsWithJosef</h1>
             </Link>
-            <ul className="flex space-x-4">
+            <MobileNav />
+            <ul className="hidden md:flex space-x-4">
               <li>
                 <Button variant="ghost" asChild>
                   <Link href="/">Home</Link>
