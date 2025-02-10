@@ -4,6 +4,7 @@ import "./globals.css"
 import type React from "react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { Analytics } from '@vercel/analytics/react'
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -22,7 +23,9 @@ export default function RootLayout({
       <body className={`${inter.className} min-h-screen bg-background flex flex-col`}>
         <header className="bg-blue-600 text-white p-4">
           <nav className="container mx-auto flex justify-between items-center">
-            <h1 className="text-2xl font-bold">MathsWithJosef</h1>
+            <Link href="/" className="hover:opacity-80 transition-opacity">
+              <h1 className="text-2xl font-bold">MathsWithJosef</h1>
+            </Link>
             <ul className="flex space-x-4">
               <li>
                 <Button variant="ghost" asChild>
@@ -58,6 +61,7 @@ export default function RootLayout({
             &copy; {new Date().getFullYear()} MathsWithJosef. All rights reserved.
           </div>
         </footer>
+        <Analytics />
       </body>
     </html>
   )

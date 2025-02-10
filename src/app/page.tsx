@@ -11,9 +11,13 @@ export default function Home() {
           Expert math tutoring for students from KS2 to GCSE, including 11+ maths & NVR, and A-level maths. Personalized
           lessons tailored to your needs and learning style.
         </p>
-        <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700">
-          <Link href="/contact">Book Your First Session</Link>
-        </Button>
+        <div className="text-center mt-8">
+          <Link href="/contact">
+            <Button className="text-xl py-6 px-8 rounded-xl hover:scale-105 transition-transform bg-blue-600 hover:bg-blue-700 text-white">
+              Book Your Free Consultation Now
+            </Button>
+          </Link>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">

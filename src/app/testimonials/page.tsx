@@ -1,3 +1,7 @@
+'use client'
+
+import { ConsultationButton } from "@/components/consultation-button"
+
 export default function Testimonials() {
   const testimonials = [
     {
@@ -19,7 +23,7 @@ export default function Testimonials() {
   ]
 
   return (
-    <div>
+    <div className="max-w-4xl mx-auto mb-24">
       <h1 className="text-4xl font-bold text-blue-600 mb-8 text-center">Testimonials</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {testimonials.map((testimonial, index) => (
@@ -29,6 +33,8 @@ export default function Testimonials() {
           </div>
         ))}
       </div>
+
+      <ConsultationButton />
     </div>
   )
 }
