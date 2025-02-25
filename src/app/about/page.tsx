@@ -9,33 +9,26 @@ export default function About() {
       
       <div className="prose prose-lg max-w-none">
         <p className="mb-6">
-          Hi, I'm Josef! I'm a dedicated mathematics tutor with a strong academic background, 
-          having achieved A-levels in <strong>Mathematics, Further Mathematics, Physics, and Economics</strong>, 
-          earning <strong>A grades in Maths and Further Maths</strong>. Since <strong>summer 2023</strong>, I have been tutoring 
-          <strong> both online and in-person</strong>, working with students of all abilities.
+          Hi, I'm Josef, a dedicated mathematics tutor with a strong mathematical background, 
+          having achieved A-levels in Mathematics, Further Mathematics, Physics, and Economics.
+          I am currently in my final year at Cardiff University studing economics, and based in Maidenhead when I'm back home.
+          I started my tutoring in 2023, and have been tutoring both online and in-person ever since.
+          
         </p>
 
         <h2 className="text-2xl font-bold text-blue-600 mt-8 mb-4">My Approach</h2>
         <p className="mb-6">
-          I believe that every student learns differently, which is why I tailor my teaching 
-          to their specific goals—whether that's <strong>exam preparation, building confidence, or improving problem-solving skills</strong>. 
-          My lessons are <strong>interactive and engaging</strong>, designed to help students truly understand mathematical concepts 
-          rather than just memorizing formulas.
+         I understand that every student is unique, and I take the time to discover what works best for you. 
+         Instead of a one-size-fits-all approach, I tailor each session to your specific goals, whether that's 
+         fine-tuning exam techniques, boosting problem-solving skills, or simply gaining more confidence in maths.
         </p>
         
         <h2 className="text-2xl font-bold text-blue-600 mt-8 mb-4">Services Offered</h2>
         <p className="mb-6">
-          I currently offer <strong>one-on-one tutoring</strong>, but please feel free to 
-          <strong>enquire about group sessions</strong> if you're interested.
-        </p>
-
-        
-
-        <h2 className="text-2xl font-bold text-blue-600 mt-8 mb-4">Why I Became a Tutor</h2>
-        <p className="mb-6">
-          I started tutoring because it allows me to combine my <strong>passion for mathematics</strong> 
-          with my drive to help students <strong>achieve their goals</strong>. Seeing students grow in confidence 
-          and succeed in their studies is what makes tutoring so rewarding for me.
+         My focus is on providing high-quality tutoring for KS3 and KS4 students, with special attention given to GCSE
+          preparation. While I offer online one-on-one sessions from university, I can also accommodate in-person tutoring 
+          in the Thames Valley area and group sessions if needed; for 11+ Maths & NVR or A-level Maths and Further Maths, 
+          please enquire for further details.
         </p>
 
         <ConsultationButton />

@@ -21,6 +21,9 @@ export function MobileNav() {
           <Link href="/about" className="block py-2 text-lg">
             About
           </Link>
+          <Link href="/faq" className="block py-2 text-lg">
+            FAQ
+          </Link>
           <Link href="/resources" className="block py-2 text-lg">
             Resources
           </Link>
