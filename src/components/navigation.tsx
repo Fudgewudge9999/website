@@ -9,14 +9,14 @@ export function Navigation() {
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               {/* Existing navigation links */}
-              <a href="/" className="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium">
+              <a href="/" className="text-gray-900 hover:text-blue-600 px-3 py-2 text-base font-medium">
                 Home
               </a>
-              <a href="/about" className="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium">
+              <a href="/about" className="text-gray-900 hover:text-blue-600 px-3 py-2 text-base font-medium">
                 About
               </a>
               {/* Add the new FAQ link */}
-              <a href="/faq" className="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium">
+              <a href="/faq" className="text-gray-900 hover:text-blue-600 px-3 py-2 text-base font-medium">
                 FAQ
               </a>
               {/* Other links */}
