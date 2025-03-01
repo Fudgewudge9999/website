@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Analytics } from '@vercel/analytics/react'
 import { MobileNav } from "@/components/mobile-nav"
+import Image from "next/image"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -30,7 +31,14 @@ export default function RootLayout({
       <body className={`${inter.className} min-h-screen bg-background flex flex-col`}>
         <header className="bg-blue-600 text-white p-4">
           <nav className="container mx-auto flex justify-between items-center">
-            <Link href="/" className="hover:opacity-80 transition-opacity">
+            <Link href="/" className="hover:opacity-80 transition-opacity flex items-center gap-2">
+              <Image 
+                src="/apple-touch-icon.png" 
+                alt="MathsWithJosef Logo" 
+                width={32} 
+                height={32} 
+                className="rounded-lg"
+              />
               <h1 className="text-2xl font-bold">MathsWithJosef</h1>
             </Link>
             <MobileNav />
@@ -52,7 +60,7 @@ export default function RootLayout({
               </li>
               <li>
                 <Button variant="ghost" asChild className="text-lg">
-                  <Link href="/resources">Resources</Link>
+                  <Link href="/pricing">Pricing</Link>
                 </Button>
               </li>
               <li>

@@ -7,13 +7,13 @@ import Link from "next/link"
 export default function Testimonials() {
   return (
     <div className="max-w-4xl mx-auto mb-24 px-4">
-      <h1 className="text-4xl font-bold text-blue-600 mb-8 text-center">Testimonials</h1>
+      <h1 className="text-4xl font-bold mb-8 text-center">Testimonials</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {testimonials.map((testimonial, index) => (
           <div key={index} className="bg-white p-6 rounded-lg shadow-md">
             <p className="text-lg mb-4">&ldquo;{testimonial.quote}&rdquo;</p>
-            <p className="text-blue-600 font-bold">- {testimonial.author}, {testimonial.role}</p>
+            <p className="font-bold">- {testimonial.author}, {testimonial.role}</p>
           </div>
         ))}
       </div>

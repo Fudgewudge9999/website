@@ -31,8 +31,8 @@ export function MobileNav() {
           <Link href="/faq" className="block py-2 text-lg" onClick={handleLinkClick}>
             FAQ
           </Link>
-          <Link href="/resources" className="block py-2 text-lg" onClick={handleLinkClick}>
-            Resources
+          <Link href="/pricing" className="block py-2 text-lg" onClick={handleLinkClick}>
+            Pricing
           </Link>
           <Link href="/testimonials" className="block py-2 text-lg" onClick={handleLinkClick}>
             Testimonials

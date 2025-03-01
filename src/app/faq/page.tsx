@@ -14,7 +14,7 @@ function FAQItem({ question, answer }: { question: string, answer: React.ReactNo
         onClick={() => setIsOpen(!isOpen)}
         className="w-full px-4 py-2 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
       >
-        <h3 className="text-base font-medium text-blue-600">{question}</h3>
+        <h3 className="text-base font-medium">{question}</h3>
         {isOpen ? 
           <ChevronUp className="h-4 w-4 text-blue-600 flex-shrink-0 ml-2" /> : 
           <ChevronDown className="h-4 w-4 text-blue-600 flex-shrink-0 ml-2" />
@@ -46,10 +46,10 @@ function CategoryItem({
         onClick={() => setIsOpen(!isOpen)}
         className="w-full px-6 py-4 text-left flex justify-between items-center bg-white hover:bg-gray-50 transition-colors border-b"
       >
-        <h2 className="text-2xl font-semibold text-blue-700">{category}</h2>
+        <h2 className="text-2xl font-semibold">{category}</h2>
         {isOpen ? 
-          <ChevronUp className="h-6 w-6 text-blue-700 flex-shrink-0 ml-2" /> : 
-          <ChevronDown className="h-6 w-6 text-blue-700 flex-shrink-0 ml-2" />
+          <ChevronUp className="h-6 w-6 text-blue-600 flex-shrink-0 ml-2" /> : 
+          <ChevronDown className="h-6 w-6 text-blue-600 flex-shrink-0 ml-2" />
         }
       </button>
       
@@ -96,8 +96,8 @@ export default function FAQ() {
           question: "What are your qualifications and experience?",
           answer: (
             <p className="text-sm">
-              I'm currently studying Mathematics at Imperial College London. I have over 3 years of tutoring experience, 
-              helping students achieve excellent results in their mathematics exams. I achieved A* grades in Mathematics 
+              I'm currently studying Economics at Cardiff University. I have been tutoring since 2023, 
+              helping students achieve excellent results in their mathematics exams. I achieved A grades in Mathematics 
               and Further Mathematics at A-level and have a deep understanding of the curriculum and examination requirements.
             </p>
           )
@@ -157,7 +157,7 @@ export default function FAQ() {
             <p className="text-sm">
               My rates vary depending on the level of study, session duration, and whether it's online or in-person. 
               Please get in touch for a personalized quote based on your specific needs. I offer discounts for block 
-              bookings and siblings. Payment is typically requested before each session or monthly for regular students.
+              bookings and siblings. Payment is typically requested before each session or biweekly for regular students.
             </p>
           )
         },
@@ -242,7 +242,7 @@ export default function FAQ() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 mb-16 bg-white">
-      <h1 className="text-3xl font-bold text-blue-600 mb-8 text-center pt-6">Frequently Asked Questions</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center pt-6">Frequently Asked Questions</h1>
       
       {/* Main categories with nested subquestions */}
       <div className="space-y-8">

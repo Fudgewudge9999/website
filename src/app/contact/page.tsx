@@ -1,14 +1,14 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { cn } from "@/lib/utils"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { CheckCircle2, XCircle } from "lucide-react"
+import { CheckCircle2, XCircle, Loader2 } from "lucide-react"
 
 export default function Contact() {
   const [name, setName] = useState('')
@@ -18,6 +18,17 @@ export default function Contact() {
   const [showSuccess, setShowSuccess] = useState(false)
   const [showError, setShowError] = useState(false)
   const [subject, setSubject] = useState<string>('')
+  const [errorMessage, setErrorMessage] = useState('')
+
+  useEffect(() => {
+    if (showSuccess || showError) {
+      const timer = setTimeout(() => {
+        setShowSuccess(false)
+        setShowError(false)
+      }, 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [showSuccess, showError])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,8 +49,10 @@ export default function Contact() {
         }),
       });
 
+      const data = await response.json();
+      
       if (!response.ok) {
-        throw new Error('Failed to send message');
+        throw new Error(data.message || 'Failed to send message');
       }
 
       // Clear form
@@ -55,6 +68,7 @@ export default function Contact() {
 
     } catch (error) {
       console.error('Error:', error);
+      setErrorMessage(error instanceof Error ? error.message : 'An unexpected error occurred');
       setIsLoading(false);
       setShowError(true);
       // Also scroll to top on error
@@ -64,7 +78,7 @@ export default function Contact() {
 
   return (
     <div className="max-w-2xl mx-auto mb-24">
-      <h1 className="text-4xl font-bold text-blue-600 mb-8 text-center">Contact Me</h1>
+      <h1 className="text-4xl font-bold mb-8 text-center">Contact Me</h1>
       
       {showSuccess && (
         <Alert className="mb-6 bg-green-50 text-green-700 border-green-200">
@@ -79,7 +93,7 @@ export default function Contact() {
         <Alert className="mb-6 bg-red-50 text-red-700 border-red-200">
           <XCircle className="h-4 w-4" />
           <AlertDescription>
-            Sorry, there was an error sending your message. Please try again.
+            {errorMessage || 'Sorry, there was an error sending your message. Please try again.'}
           </AlertDescription>
         </Alert>
       )}
@@ -87,15 +101,33 @@ export default function Contact() {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-            Name
+            Name <span className="text-red-500">*</span>
           </label>
-          <Input type="text" id="name" name="name" required className="mt-1" value={name} onChange={(e) => setName(e.target.value)} />
+          <Input 
+            type="text" 
+            id="name" 
+            name="name" 
+            required 
+            className={cn("mt-1", !name && "border-red-300 focus:border-red-500")}
+            value={name} 
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Your full name"
+          />
         </div>
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            Email
+            Email <span className="text-red-500">*</span>
           </label>
-          <Input type="email" id="email" name="email" required className="mt-1" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <Input 
+            type="email" 
+            id="email" 
+            name="email" 
+            required 
+            className={cn("mt-1", !email && "border-red-300 focus:border-red-500")}
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="your.email@example.com"
+          />
         </div>
         <div>
           <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
@@ -122,16 +154,40 @@ export default function Contact() {
         </div>
         <div>
           <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-            Message
+            Message <span className="text-red-500">*</span>
           </label>
-          <Textarea id="message" name="message" rows={4} className="mt-1" value={message} onChange={(e) => setMessage(e.target.value)} />
+          <Textarea 
+            id="message" 
+            name="message" 
+            rows={4} 
+            required
+            className="mt-1" 
+            value={message} 
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Please write your message here..."
+          />
+          <p className="text-sm text-gray-500 mt-1">
+            {message.length}/1000 characters
+          </p>
+        </div>
+        <div className="text-sm text-gray-500">
+          <p>
+            By submitting this form, you agree to our privacy policy. Your information will only be used to respond to your inquiry.
+          </p>
         </div>
         <Button 
           type="submit" 
           className="mt-8 w-full px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors text-center" 
           disabled={isLoading}
         >
-          {isLoading ? 'Sending...' : 'Submit'}
+          {isLoading ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Sending...
+            </>
+          ) : (
+            'Send Message'
+          )}
         </Button>
       </form>
     </div>

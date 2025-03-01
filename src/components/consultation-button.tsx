@@ -12,7 +12,7 @@ export function ConsultationButton({ className }: ConsultationButtonProps) {
   return (
     <div className="text-center mt-12">
       <Link href="/contact">
-        <Button className={cn("text-xl py-6 px-8 rounded-xl hover:scale-105 transition-transform bg-blue-600 hover:bg-blue-700 text-white", className)}>
+        <Button className={cn("text-xl py-6 px-8 rounded-xl hover:scale-105 transition-transform bg-black hover:bg-gray-800 text-white", className)}>
           Book a free trial session now
         </Button>
       </Link>
