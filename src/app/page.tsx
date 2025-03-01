@@ -1,6 +1,8 @@
 import * as React from "react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { TestimonialCarousel } from "@/components/ui/testimonial-carousel"
+import { testimonials } from "@/lib/testimonials"
 
 export default function Home() {
   return (
@@ -18,9 +20,14 @@ export default function Home() {
           </Link>
         </div>
         
-        <div className="mt-8 bg-blue-50 p-6 rounded-lg max-w-2xl">
-          <p className="text-lg italic text-gray-700">"Josef's tutoring transformed my understanding of GCSE maths. His patient approach and clear explanations helped me achieve an 8 when I was previously struggling to get a 5. Highly recommended!"</p>
-          <p className="text-right font-semibold mt-2">- Student Name, GCSE Student</p>
+        <div className="mt-8">
+          <h2 className="text-2xl font-semibold text-center mb-4 text-blue-600">What My Students Say</h2>
+          <TestimonialCarousel testimonials={testimonials} />
+          <div className="text-center mt-4">
+            <Link href="/testimonials" className="text-blue-600 hover:underline font-medium">
+              View all testimonials
+            </Link>
+          </div>
         </div>
       </div>
     </div>

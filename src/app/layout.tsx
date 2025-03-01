@@ -12,6 +12,12 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "MathsWithJosef - Online Tutoring Services",
   description: "Expert math tutoring for KS2-GCSE, 11+ maths & NVR, and A-level maths",
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '16x16' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
 }
 
 export default function RootLayout({
@@ -30,32 +36,32 @@ export default function RootLayout({
             <MobileNav />
             <ul className="hidden md:flex space-x-4">
               <li>
-                <Button variant="ghost" asChild>
+                <Button variant="ghost" asChild className="text-lg">
                   <Link href="/">Home</Link>
                 </Button>
               </li>
               <li>
-                <Button variant="ghost" asChild>
+                <Button variant="ghost" asChild className="text-lg">
                   <Link href="/about">About</Link>
                 </Button>
               </li>
               <li>
-                <Button variant="ghost" asChild>
+                <Button variant="ghost" asChild className="text-lg">
                   <Link href="/faq">FAQ</Link>
                 </Button>
               </li>
               <li>
-                <Button variant="ghost" asChild>
+                <Button variant="ghost" asChild className="text-lg">
                   <Link href="/resources">Resources</Link>
                 </Button>
               </li>
               <li>
-                <Button variant="ghost" asChild>
+                <Button variant="ghost" asChild className="text-lg">
                   <Link href="/testimonials">Testimonials</Link>
                 </Button>
               </li>
               <li>
-                <Button variant="ghost" asChild>
+                <Button variant="ghost" asChild className="text-lg">
                   <Link href="/contact">Contact</Link>
                 </Button>
               </li>
